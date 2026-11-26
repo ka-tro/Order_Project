@@ -167,8 +167,7 @@ namespace Order_Project_Tests
             _paymentMock.Setup(p => p.ProcessPayment(It.IsAny<Order>())).Returns(false);
 
             // Act
-            try { _service.CreateOrder(DefaultProduct, DefaultQuantity); }
-            catch { }
+          _service.CreateOrder(DefaultProduct, DefaultQuantity);
 
             // Assert
             _notificationMock.Verify(n => n.SendConfirmation(It.IsAny<Order>()), Times.Never);
